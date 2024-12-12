@@ -23,14 +23,14 @@ def bubble_sort(array, draw_bars, speed, stop_event):
     i = 0
     j = 0
     while i < n:
-        if stop_event.is_set():  # Check if stop is requested
+        if stop_event.is_set():
             return i, j
         while j < n - i - 1:
             if stop_event.is_set():
                 return i, j
             if array[j] > array[j + 1]:
                 array[j], array[j + 1] = array[j + 1], array[j]
-                draw_bars(array, highlight([j, j + 1], n))  # Highlight comparisons
+                draw_bars(array, highlight([j, j + 1], n))
                 time.sleep(speed)
             j += 1
         i += 1
@@ -50,11 +50,11 @@ def insertion_sort(array, draw_bars, speed, stop_event):
                 return i
             array[j + 1] = array[j]
             j -= 1
-            draw_bars(array, highlight([j + 1], len(array)))  # Highlight movement
+            draw_bars(array, highlight([j + 1], len(array)))
             time.sleep(speed)
         array[j + 1] = key
         i += 1
-    return -1  # Sorting finished
+    return -1
 
 def selection_sort(array, draw_bars, speed, stop_event):
     n = len(array)
@@ -69,25 +69,24 @@ def selection_sort(array, draw_bars, speed, stop_event):
             if array[j] < array[min_idx]:
                 min_idx = j
         array[i], array[min_idx] = array[min_idx], array[i]
-        draw_bars(array, highlight([i, min_idx], n))  # Highlight swapping
+        draw_bars(array, highlight([i, min_idx], n))
         time.sleep(speed)
         i += 1
-    return -1  # Sorting finished
+    return -1 
 
 def stop_sorting():
     global sorting, stop_event
     sorting = False
-    stop_event.set()  # Signal the sorting thread to stop
+    stop_event.set() 
 
 def start_sorting():
     global sorting, stop_event
     if sorting:
         return
     sorting = True
-    stop_event.clear()  # Clear stop event for new sorting
+    stop_event.clear() 
     selected_algorithm = algorithm_var.get()
 
-    # Start the sorting in a new thread
     threading.Thread(target=run_sorting, args=(selected_algorithm, stop_event)).start()
 
 def run_sorting(selected_algorithm, stop_event):
@@ -98,7 +97,6 @@ def run_sorting(selected_algorithm, stop_event):
     elif selected_algorithm == "Selection Sort":
         selection_sort(array, lambda arr, colors, speed=speed_slider.get(): draw_bars(canvas, arr, colors), speed_slider.get(), stop_event)
 
-    # Notify when sorting is complete
     messagebox.showinfo("Sorting Complete", f"{selected_algorithm} finished sorting!")
 
 def resume_sorting():
@@ -106,10 +104,9 @@ def resume_sorting():
     if sorting:
         return
     sorting = True
-    stop_event.clear()  # Clear stop event for new sorting
+    stop_event.clear() 
     selected_algorithm = algorithm_var.get()
 
-    # Start the sorting in a new thread
     threading.Thread(target=run_sorting, args=(selected_algorithm, stop_event)).start()
 
 def reset():
@@ -171,7 +168,7 @@ exit_button.pack()
 
 array = []
 sorting = False
-stop_event = threading.Event()  # Event to signal stopping sorting
+stop_event = threading.Event() 
 
 generate_random_sequence()
 root.mainloop()

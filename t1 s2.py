@@ -169,7 +169,7 @@ csv_filename = "cnp_data.csv"
 try:
     with open(csv_filename, mode='r') as file:
         reader = csv.reader(file)
-        next(reader)  # Sare peste header
+        next(reader)
         all_cnp = []
 
         for row in reader:
@@ -188,7 +188,7 @@ if all_cnp:
     for cnp in selected_cnp:
         _, iterations = database.search_with_iterations(cnp)
         total_iterations += iterations
-        county_code_value = cnp[7:9]  # Extrage codul județului din CNP
+        county_code_value = cnp[7:9] 
         county_name = county_code.get(county_code_value, "Necunoscut")
         county_count[county_name] += 1
 

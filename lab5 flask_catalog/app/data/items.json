@@ -1,0 +1,26 @@
+[
+    {
+        "id": 2,
+        "name": "Little woman",
+        "quantity": 89,
+        "price": 18
+    },
+    {
+        "id": 3,
+        "name": "Harry Potter",
+        "quantity": 57,
+        "price": 40
+    },
+    {
+        "id": 4,
+        "name": "Lapte",
+        "quantity": 7,
+        "price": 12
+    },
+    {
+        "id": 5,
+        "name": "Miere",
+        "quantity": 6,
+        "price": 34
+    }
+]

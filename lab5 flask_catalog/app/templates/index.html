@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionare inventar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            border: 1px solid black;
+            padding: 10px;
+            width: fit-content;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .buttons button {
+            margin: 5px 0;
+            width: 100px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form label {
+            margin: 5px 0 2px;
+        }
+        .form input {
+            margin-bottom: 8px;
+        }
+        table {
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestionare inventar</h1>
+    <div class="container">
+        <div class="buttons">
+            <button onclick="addItem()">Adăugare</button>
+            <button onclick="displayItems()">Afișare</button>
+            <button onclick="editItem()">Editare</button>
+            <button onclick="deleteItem()">Ștergere</button>
+        </div>
+        <div class="form">
+            <label>Index:</label>
+            <input type="text" id="indexInput">
+            <label>Nume produs:</label>
+            <input type="text" id="nameInput">
+            <label>Cantitate:</label>
+            <input type="number" id="quantityInput">
+            <label>Preț:</label>
+            <input type="number" id="priceInput">
+        </div>
+    </div>
+
+    <table id="itemsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Produs</th>
+                <th>Cantitate</th>
+                <th>Preț (RON)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
